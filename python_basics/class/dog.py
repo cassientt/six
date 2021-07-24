@@ -26,3 +26,10 @@ print(f"My dog is {my_dog.age}.")
 # 调用方法
 my_dog.sit()
 my_dog.roll_over()
+
+'''
+My dog is willie.
+My dog is 6.
+willie is now sitting.
+willie rolled over. 
+'''
