@@ -1,0 +1,372 @@
+#### 5 if语句
+- if语句让你能够检查程序的当前状态，并采取相应的措施;
+
+```python
+cars = ['audi', 'bmw', 'subaru', 'toyota']
+for car in cars: 
+    if car == 'bmw': # 条件测试
+        print(car.upper()) 
+# 可执行任何操作，条件测试的结果为True,Python就会执行紧跟在if语句后面的代码，否则Python将忽略这些代码。
+    else:
+        print(car.title())
+
+"""
+Audi
+BMW
+Subaru
+Toyota
+
+"""
+
+#在if语句中，缩进的作用与在for循环中相同。
+# 如果测试通过了，将执行if语句后面所有缩进的代码行，否则将忽略它们
+```
+
+#####  5.1  条件测试
+- if语句的核心都是一个值为True或False的表达式，这种表达式称为条件测试;
+- 条件测试的值为True,Python就执行紧跟在if语句后面的代码；如果为False,Python就忽略这些代码;
+```shell
+1. 一个等号是陈述,赋值:car = 'bmw';
+2. 两个等号则是发问,car == 'bmw'
+这个相等运算符在两边的值相等时返回True 否则返回False
+
+```
+#####  5.2 检查是否相等时区分，大小写
+- 网站采用类似的方式让用户输入的数据符合特定的格式;
+
+```python
+cars = ['audi', 'bMw', 'subaru', 'toyota']
+for car in cars:
+    if car.lower() == 'bmw':
+        print(car.upper())
+    else:
+        print(car.title())
+
+# 检查是否不相等
+
+requested_topping = 'mushrooms'
+if requested_topping != 'anchovies':
+    print('hold the anchovies!')
+```
+
+#####  5.2 数值比较
+```python
+# 中可包含各种数学比较，如小于、小于等于、大于、大于等于
+
+age = 19
+if age != 42:
+    print('try again')
+
+if age < 21:
+    print('ture')
+if age <= 21:
+    print('true 2')
+if age >= 21:
+    print('false')
+if age > 21:
+    print('false 2')
+'''
+try again
+ture
+true 2
+'''
+```
+#####  5.3 检查多个条件
+
+```python
+# 1．使用and检查多个条件：只有一个条件成立即为false，全都成立为true（都真才为真）
+age1 = 22
+age2 = 18
+if age1 >= 21 and age2 >= 21:
+    print('false')
+if (age1 >= 21) and (age2 >= 17):
+    print('true')
+ # true
+# 使用（）增加可读性，两个条件都成立为true
+
+# or：有任何一个条件成立即为true，都不成立为false（一真必真）
+age1 = 22
+age2 = 18
+if age1 >= 21 or age2 >= 21:
+    print('true')
+if age1 >= 22 or age2 >= 45:
+    print('false')
+
+```
+#####  5.4 检查特定值是否包含在列表中
+```python
+
+cars = ['audi', 'bMw', 'subaru', 'toyota']
+user = 'cassie'
+if 'toyota' in cars:
+    print('true')
+if user not in cars:
+    print(f'{user.title()} not in cars,you can make')
+
+'''
+true
+Cassie not in cars,you can make
+
+'''
+```
+
+#####  5.5 布尔表达式
+- 布尔表达式，它不过是条件测试的别名。与条件表达式一样，布尔表达式的结果要么为True，要么为False
+#####  5.6 if-else语句（只存在两种情形）
+- 条件测试通过时执行一个操作，在没有通过时执行另一个操作；
+#####  5.7 if-elif-else结构 （检查超过两个的情形）
+````python
+
+# 根据年龄段收费的游乐场：❏ 4岁以下免费；❏ 4～18岁收费25美元；❏ 18岁（含）以上收费40美元。
+
+age = 17
+
+if age < 4:
+    print('your admission coast is $0.')
+elif age < 18:
+    print('your admission coast is $25.')
+else:
+    print('your admission coast is $40.')
+
+# 更加简洁易修改
+age = 30
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+else:
+    price = 40
+print(f'your admission coast is {price}.')
+````
+#####  5.8 使用多个elif代码块
+
+```python
+age = 66
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+elif age < 65:
+    price = 40
+else:
+    price = 20
+print(f'your admission coast is {price}.')
+```
+#####  5.9 省略else代码块
+- else是一条包罗万象的语句，只要不满足任何if或elif中的条件测试，其中的代码就会执行。
+- 这可能引入无效甚至恶意的数据。如果知道最终要测试的条件，应考虑使用一个elif代码块来代替else代码块;
+#####  5.10  测试多个条件
+```shell
+如果只想执行一个代码块，就使用if-elif-else结构；
+如果要执行多个代码块，就使用一系列独立的if语句
+```
+```python
+
+# 如果顾客点了两种配料，就需要确保在其比萨中包含这些配料：
+
+requested_toppings = ['mushroom', 'extra cheese']
+if 'mushroom' in requested_toppings:
+    print(f'adding mushroom.')
+if 'extra cheese' in requested_toppings:
+    print(f'adding extra cheese.')
+print('Taking your pizza.')
+```
+
+#####  5.11 使用if语句处理列表
+```python
+
+requested_toppings = ['mushroom','green peppers', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping == 'green peppers':
+        print('sorry,green peppers is gone')
+    print(f'adding {requested_topping}')
+
+print('Taking your pizza.')
+
+
+```
+#####  5.12 确定列表不是空的
+```python
+requested_toppings = []
+if requested_toppings: # 判断列表是否为空
+    for requested_topping in requested_toppings:
+        print(f'adding {requested_topping}')
+    print('Taking your pizza.')
+else:
+    print('Are you sure want a plain pizza.')
+```
+
+#####  5.13 使用多个列表
+```python
+available_topping = ['mushroom', 'green peppers', 'olives']
+requested_toppings = ['mushroom', 'green peppers', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_topping:
+        print(f'adding {requested_topping}')
+else:
+    print(f"sorry,we don't have {requested_topping} ")
+
+print('Taking your pizza.')
+```
+###  6.while and  input()
+```python
+message = input('Tell me something ,and I will repeat it back to you:  ')
+
+print(f"Hello {message}")  #  Hello 1
+
+print(type(message))   # <class 'str'>
+
+```
+####   6.1 使用int()来获取数值输入
+
+ ```python
+age = input('how old are you:')
+print(age + 1)  # TypeError: must be str, not int
+
+print(int(age) + 1) 
+
+
+
+# 使用求模运算符判断输入的数是什么类型
+number = input('Input a number ,I will tell you even or odd: ')
+number = int(number)
+if number % 2 == 0:
+    print(f' {number} is even.')
+else:
+    print(f' {number} is odd.')
+
+```
+
+
+###  7 while循环简介
+- while循环则不断运行，直到指定的条件不满足为止。
+```python
+current_number = 1
+while current_number <= 5:
+    print(current_number)
+    # current_number += 1
+    current_number = current_number + 1
+# 打印出1-5
+```
+####  7.1 让用户选择何时退出
+```python
+prompt = '\n Tell me something,I will repeat it back to you: '
+prompt += '\n Enter "quit" to end  the program.'
+
+message = ''
+while message != 'quit':
+    message = input(prompt)
+    if message != 'quit':
+        print(message)
+
+# 使用标志
+# 标志很有用：在任意一个事件导致活动标志变成False时,主游戏循环将退出，此时可显示一条游戏结束消息，并让用户选择是否要重新玩.
+prompt = '\n Tell me something,I will repeat it back to you: '
+prompt += '\n Enter "quit" to end  the program.'
+
+active = True
+while active:
+    message = input(prompt)
+    if message == 'quit':
+        active = False
+    else:
+        print(message)
+```
+####  7.1使用break退出循环(符合条件退出全部循环，后面不在执行)
+- 在任何Python循环中都可使用break语句。
+- 例如，可使用break语句来退出遍历列表或字典的for循环。
+```python
+prompt = '\n Please enter a city,you have visited:  '
+prompt += '\n Enter "quit" when you are finished.'
+
+while True:
+    city = input(prompt)
+    if city == 'quit':
+        break
+    else:
+        print(f"I'd love to go to {city.title()}.")
+```
+####  7.1 在循环中使用continue（退出符合条件的当前循环，继续没有循环完的）
+```python
+# 打印奇数
+current_number = 0
+while current_number < 10:
+    current_number += 1
+    if current_number % 2 == 0:
+        continue
+    print(current_number)
+```
+
+####  7.2 避免无限循环
+```python
+x = 1
+while x < 5:
+    print(x)
+# control + C :KeyboardInterrupt
+# 确认程序至少有一个这样的地方能让循环条件为False，或者让break语句得以执行;
+```
+
+####  7.3 使用while循环处理列表和字典
+```python
+# 使用while循环处理列表和字典
+
+unconfirmed_user = ['cassie', 'peer', 'tom']
+confirmed_users = []
+while unconfirmed_user:
+    current_user = unconfirmed_user.pop()
+    print(f"Verifying user:{current_user.title()}")
+    confirmed_users.append(current_user)
+print("The following users have been confirmed")
+for confirmed_user in confirmed_users:
+    print(confirmed_user.title())
+'''
+Verifying user:Tom
+Verifying user:Peer
+Verifying user:Cassie
+The following users have been confirmed
+Tom
+Peer
+Cassie
+'''
+```
+####  7.4 删除为特定值的所有列表元素
+
+```python
+# 删除为特定值的所有列表元素
+
+unconfirmed_users = ['cassie', 'peer','cassie', 'tom','cassie']
+print(unconfirmed_users)
+while 'cassie' in unconfirmed_users:
+    unconfirmed_users.remove('cassie')
+print(unconfirmed_users)
+
+'''
+['cassie', 'peer', 'cassie', 'tom', 'cassie']
+['peer', 'tom']
+
+'''
+
+```
+####  7.5 使用用户输入来填充字典
+```python
+# 使用用户输入来填充字典
+
+
+mountain_responses = {}
+
+polling_active = True
+while polling_active:
+    name = input("\n what's you name? ")
+    response = input("\n which mountain would you like to climb someday?")
+    mountain_responses[name] = response
+    repeat = input("would you like to let another person respond? (yes/no)")
+    if repeat == 'no':
+        polling_active = False
+print("-----polling end -----")
+for name,response in mountain_responses.items():
+    print(f"{name} would like to climb {response}.")
+```
